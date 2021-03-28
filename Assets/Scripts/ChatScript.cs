@@ -36,7 +36,8 @@ public class ChatScript : MonoBehaviour,IChatClientListener
             _chat.Service();
         }
         CheckPlaceHolder();
-        if (Input.GetKeyDown(KeyCode.Return) && !string.IsNullOrEmpty(_userName) && !string.IsNullOrEmpty(_input.text))
+        if ((Input.GetKeyDown(KeyCode.Return) || _input.touchScreenKeyboard != null && _input.touchScreenKeyboard.status == TouchScreenKeyboard.Status.Done)
+            && !string.IsNullOrEmpty(_userName) && !string.IsNullOrEmpty(_input.text))
         {
             OnSend();
         }
